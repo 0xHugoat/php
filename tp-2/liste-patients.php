@@ -1,121 +1,71 @@
+
 <?php
 require_once('connexion.php');
 
 $request = $db->query('SELECT * FROM patients');
 $patients = $request->fetchAll();
-
-
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des patients | MediCare</title>
+    <title>Liste des patients</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
+    <main class="liste">
+        <h1>Liste des patients</h1>
+        <p>Consultez les dossiers de vos patients enregistrés.</p>
 
-    <main class="container">
-
-        <div class="page-top">
-            <div class="page-heading">
-                <span class="eyebrow">GESTION DES PATIENTS</span>
-                <h1>Liste des patients</h1>
-                <p>Consultez les dossiers de vos patients enregistrés.</p>
-            </div>
-
-            <a href="ajout-patient.php" class="add-button">
-                + Ajouter un patient
-            </a>
-        </div>
+        <a href="ajout-patient.php">+ Ajouter un patient</a>
 
         <?php if (empty($patients)): ?>
 
-            <div class="empty-state">
-                <div class="empty-icon">♙</div>
-                <h2>Aucun patient enregistré</h2>
-                <p>Commencez par ajouter votre premier patient.</p>
-                <a href="ajout-patient.php" class="add-button">
-                    + Ajouter un patient
-                </a>
-            </div>
+            <h2>Aucun patient enregistré</h2>
+            <p>Commencez par ajouter votre premier patient.</p>
 
         <?php else: ?>
 
-            <div class="patients-grid">
-
+            <section>
                 <?php foreach ($patients as $patient): ?>
 
                     <article class="patient">
 
-                        <div class="patient-header">
+                        <h2>
+                            <?= htmlspecialchars($patient['firstname']) ?>
+                            <?= htmlspecialchars($patient['lastname']) ?>
+                        </h2>
 
-                            <div class="patient-avatar">
-                                <?= htmlspecialchars(
-                                    strtoupper(
-                                        substr($patient['firstname'], 0, 1) .
-                                        substr($patient['lastname'], 0, 1)
-                                    )
-                                ) ?>
-                            </div>
+                        <p>
+                            <strong>Date de naissance :</strong>
+                            <?= htmlspecialchars($patient['birthdate']) ?>
+                        </p>
 
-                            <div class="patient-identity">
-                                <h3>
-                                    <?= htmlspecialchars($patient['firstname']) ?>
-                                    <?= htmlspecialchars($patient['lastname']) ?>
-                                </h3>
-                                <span>Patient</span>
-                            </div>
+                        <p>
+                            <strong>Téléphone :</strong>
+                            <a href="tel:<?= htmlspecialchars($patient['phone']) ?>">
+                                <?= htmlspecialchars($patient['phone']) ?>
+                            </a>
+                        </p>
 
-                        </div>
+                        <p>
+                            <strong>Email :</strong>
+                            <a href="mailto:<?= htmlspecialchars($patient['mail']) ?>">
+                                <?= htmlspecialchars($patient['mail']) ?>
+                            </a>
+                        </p>
 
-                        <dl class="patient-details">
-
-                            <div class="detail-row">
-                                <dt>📅 Date de naissance</dt>
-                                <dd>
-                                    <?= htmlspecialchars($patient['birthdate']) ?>
-                                </dd>
-                            </div>
-
-                            <div class="detail-row">
-                                <dt>☎ Téléphone</dt>
-                                <dd>
-                                    <a href="tel:<?= htmlspecialchars($patient['phone']) ?>">
-                                        <?= htmlspecialchars($patient['phone']) ?>
-                                    </a>
-                                </dd>
-                            </div>
-
-                            <div class="detail-row">
-                                <dt>✉ Adresse e-mail</dt>
-                                <dd>
-                                    <a href="mailto:<?= htmlspecialchars($patient['mail']) ?>">
-                                        <?= htmlspecialchars($patient['mail']) ?>
-                                    </a>
-                                </dd>
-                            </div>
-
-                        </dl>
-
-                        <a href="./profil-patient.php?id=<?= $patient['id'] ?>" class="profile-button">
-                            Voir le profil
-                            <span>→</span>
+                        <a href="profil-patient.php?id=<?= (int) $patient['id'] ?>">
+                            Voir le profil →
                         </a>
 
                     </article>
 
                 <?php endforeach; ?>
-
-            </div>
+            </section>
 
         <?php endif; ?>
 

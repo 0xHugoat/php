@@ -8,5 +8,8 @@
 </head>
 <body>
     <a href="./ajout-patient.php">Ajout-patient</a>
+    <a href="./ajout-rendezvous.php">Ajout-rendez-vous</a>
+    <a href="./liste-patients.php">Liste patients</a>
+    <a href="./liste-rendezvous.php">Liste rendez-vous</a>
 </body>
 </html>
