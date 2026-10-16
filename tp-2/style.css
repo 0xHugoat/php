@@ -1,0 +1,428 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+    --text: #171717;
+    --background: #FFFDF5;
+    --primary: #FC6C40;
+    --primary-hover: #e75b32;
+    --secondary: #393233;
+    --white: #FFFEFA;
+    --accent: #DEFC83;
+    --muted: #706b66;
+    --border: #e6e0d8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+}
+
+/* Structure */
+
+.container {
+    max-width: 1050px;
+    margin: 75px auto;
+    padding: 0 24px;
+}
+
+.page-heading {
+    margin-bottom: 36px;
+}
+
+.eyebrow {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--secondary);
+    text-transform: uppercase;
+}
+
+.page-heading h1 {
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: -1.5px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.page-heading p {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+/* Formulaire */
+
+.form-card {
+    max-width: 850px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 35px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 25px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border);
+}
+
+.card-icon {
+    display: none;
+}
+
+.card-header h2 {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.card-header p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    height: 45px;
+    padding: 0 13px;
+    border: 1px solid var(--border);
+    background: #ffffff;
+    color: var(--text);
+    border-radius: 2px;
+    font: inherit;
+    outline: none;
+}
+
+.form-group input::placeholder {
+    color: #99938d;
+}
+
+.form-group input:focus {
+    border-color: var(--secondary);
+    outline: 1px solid var(--secondary);
+}
+
+.form-footer {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.form-footer p {
+    max-width: 320px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* Boutons */
+
+input[type="submit"],
+.add-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 11px 20px;
+    background: var(--secondary);
+    border: 1px solid var(--secondary);
+    border-radius: 2px;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover,
+.add-button:hover {
+    background: var(--text);
+}
+
+.patients-link {
+    display: inline-block;
+    margin-bottom: 28px;
+    color: var(--secondary);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.patients-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Liste des patients */
+
+.page-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.page-top .page-heading {
+    margin-bottom: 0;
+}
+
+.patients-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.patient {
+    min-width: 0;
+    padding: 25px;
+    background: var(--white);
+    border: 1px solid var(--border);
+}
+
+.patient:hover {
+    border-color: var(--secondary);
+}
+
+.patient-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--border);
+}
+
+.patient-avatar {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    background: var(--accent);
+    color: var(--text);
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.patient-identity {
+    min-width: 0;
+}
+
+.patient-identity h3 {
+    font-size: 16px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.patient-identity span {
+    display: block;
+    margin-top: 3px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* Informations des patients */
+
+.patient-details {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 24px 0;
+}
+
+.detail-row {
+    min-width: 0;
+}
+
+.detail-row dt {
+    margin-bottom: 5px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.detail-row dd {
+    font-size: 14px;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
+.detail-row a {
+    text-decoration: none;
+}
+
+.detail-row a:hover {
+    text-decoration: underline;
+}
+
+/* En savoir plus */
+
+.profile-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--secondary);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.profile-button:hover {
+    color: var(--primary-hover);
+}
+
+.profile-button span {
+    font-size: 17px;
+}
+
+/* Profil individuel */
+
+.profile-information {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 35px;
+    padding-top: 15px;
+}
+
+.profile-field {
+    min-width: 0;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.profile-field label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.profile-field p {
+    font-size: 15px;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
+.profile-field a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.profile-field a:hover {
+    text-decoration: underline;
+}
+
+/* Aucun patient */
+
+.empty-state {
+    padding: 65px 25px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    text-align: center;
+}
+
+.empty-icon {
+    display: none;
+}
+
+.empty-state h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.empty-state p {
+    margin: 10px 0 25px;
+    color: var(--muted);
+}
+
+.empty-state .add-button {
+    margin-top: 10px;
+}
+
+/* Accessibilité */
+
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 3px;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+    .container {
+        margin: 35px auto;
+        padding: 0 18px;
+    }
+
+    .page-heading h1 {
+        font-size: 29px;
+    }
+
+    .page-top,
+    .form-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .patients-grid,
+    .form-grid,
+    .profile-information {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: auto;
+    }
+
+    .form-card {
+        padding: 22px;
+    }
+
+    .page-top .add-button,
+    input[type="submit"] {
+        width: 100%;
+    }
+}
